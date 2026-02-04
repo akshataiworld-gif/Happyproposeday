@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Babe 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #e0c3fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  background: rgba(255,255,255,0.95);
+  padding: 36px;
+  border-radius: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  max-width: 340px;
+  animation: fadeIn 1.4s ease;
+  z-index: 2;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: #ff4d88;
+  margin-bottom: 6px;
+}
+
+p {
+  color: #555;
+  font-size: 15px;
+}
+
+button {
+  margin-top: 22px;
+  padding: 13px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4d88;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 25px rgba(255,77,136,0.45);
+}
+
+.hidden { display: none; }
+
+.proposal {
+  margin-top: 22px;
+  animation: pop 0.8s ease;
+}
+
+.video-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 14px 0;
+}
+
+.video-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.ring {
+  font-size: 42px;
+}
+
+.text {
+  font-size: 16px;
+  color: #ff4d88;
+}
+
+.note {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  font-size: 22px;
+  animation: float 6s infinite ease-in;
+  opacity: 0.75;
+}
+
+/* Confetti */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  animation: confettiFall 3s linear forwards;
+  z-index: 3;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(800px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 0.8; }
+  100% { transform: translateY(-800px); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8f1a7c0b61.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>Babe 💕</h1>
+  <p>I have something important to ask you…</p>
+
+  <button onclick="reveal()">Tap to Unhide 💖</button>
+
+  <div class="proposal hidden" id="proposal">
+    <div class="ring">💍</div>
+
+    <!-- PICKED YOUTUBE VIDEO -->
+    <div class="video-box">
+      <iframe
+        src="https://www.youtube.com/embed/PMP6o9X0FnI?autoplay=1&mute=1"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="text">
+      🌹 Will you be my girl? 🌹
+    </div>
+
+    <div class="note">
+      You walked into my life quietly,<br>
+      but changed everything beautifully.<br><br>
+      I don’t need perfect moments,<br>
+      just real ones — with you 💖
+    </div>
+  </div>
+</div>
+
+<script>
+function reveal() {
+  document.getElementById("proposal").classList.remove("hidden");
+  document.getElementById("bgMusic").play();
+  launchConfetti();
+}
+
+// Floating hearts
+for (let i = 0; i < 18; i++) {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+  document.body.appendChild(heart);
+}
+
+// Confetti
+function launchConfetti() {
+  for (let i = 0; i < 60; i++) {
+    let c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background =
+      ["#ff4d88", "#ffd1dc", "#e0c3fc", "#fff"][Math.floor(Math.random()*4)];
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3000);
+  }
+}
+</script>
+
+</body>
+</html>
